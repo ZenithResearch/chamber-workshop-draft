@@ -13,9 +13,14 @@ FILES = {
 }
 
 for activity in range(1, 10):
-    for folder in ('plans', 'slides'):
+    for folder in ('plans', 'slides', 'notes'):
         filename = f'{folder}/activity-{activity:02d}.html'
         FILES[f'/{filename}'] = (filename, 'text/html; charset=utf-8')
+
+
+for slide in range(2, 8):
+    filename = f'slides/activity-01-slide-{slide:02d}.html'
+    FILES[f'/{filename}'] = (filename, 'text/html; charset=utf-8')
 
 
 class Handler(BaseHTTPRequestHandler):

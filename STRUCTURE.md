@@ -18,19 +18,10 @@ An agenda entry is the compact presentation of an activity’s name, time and su
 
 ## Page mapping
 
-| Page | Records |
-|---|---|
-| `index.html` | Agenda entries, concise activity outlines and navigation |
-| `plans/activity-NN.html` | Activity name/time/summary and ordered outline with slide references |
-| `slides/activity-NN.html` | Multiple slide records, each with its content notes, facilitator notes, citations and attachment links |
-| `resources.html` | Shared resource index and full resource records |
+- Agenda: activity entries and drawers, with outline links directly to individual slides.
+- Activity plan: summary and ordered outline.
+- Slide: one presentation page, containing only the title, supplied slide content and navigation.
+- Facilitator notes: a separate readable page per activity, organized by slide; citations live with the notes they support.
+- Resources: supporting publications and works recorded once, linked wherever needed.
 
-## Record fields
-
-**Slide:** activity, title, content to include, what it needs to show, what the audience should take from it, linked resources, citations and relevant notes, attachments.
-
-**Resource:** title, type, source/publisher, link, date/version, description, audience, supported activities/slides and status.
-
-**Citation:** supported point, linked resource, section/page/passage, contextual notes, qualifications and limits. Its location is the associated slide or talking point.
-
-The resource is the complete supporting work. A citation records a particular use of it; creating a citation does not create another copy of the resource record.
+Unwritten content stays blank; record-field templates and empty citation fields are not displayed in the site.
