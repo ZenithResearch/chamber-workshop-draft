@@ -55,6 +55,25 @@ td[nowrap] { font-variant-numeric: tabular-nums; }
 
 .document { display: block; }
 .document main { max-width: 700px; margin: 0 auto; }
+.record-page nav { font-size: 14px; line-height: 1.6; }
+.record-fields { margin: 0; }
+.record-fields > div { display: grid; grid-template-columns: minmax(150px, 32%) 1fr; gap: 20px; padding: 10px 0; border-bottom: 1px solid #ccc; }
+.record-fields dt { font-weight: bold; }
+.record-fields dd { margin: 0; min-height: 24px; }
+.slide-record { border-top: 1px solid #aaa; margin-top: 24px; padding-top: 20px; scroll-margin-top: 20px; }
+.record-page details { margin: 18px 0; }
+.record-page summary { cursor: pointer; font-weight: bold; }
+.facilitator-notes > .record-fields { margin-top: 12px; }
+.citation-record { margin-top: 20px; scroll-margin-top: 20px; }
+.citation-record h3 { font-size: 17px; }
+.record-return { font-size: 14px; }
+.slide-record-index { text-align: center; }
+.plan-outline li { margin: 14px 0; }
+.empty-talking-point { display: block; min-height: 24px; }
+.record-page .shared-resource-index th, .record-page .shared-resource-index td { width: auto; white-space: normal; }
+@media (max-width: 480px) {
+  .record-fields > div { grid-template-columns: 1fr; gap: 6px; }
+}
 .document section { border-top: 1px solid #aaa; padding: 16px 0; scroll-margin-top: 20px; }
 .document h2 { font-size: 21px; margin: 0 0 10px; }
 .document p, .document li { line-height: 1.4; }

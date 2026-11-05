@@ -12,6 +12,11 @@ FILES = {
     '/styles.css': ('styles.css', 'text/css; charset=utf-8'),
 }
 
+for activity in range(1, 10):
+    for folder in ('plans', 'slides'):
+        filename = f'{folder}/activity-{activity:02d}.html'
+        FILES[f'/{filename}'] = (filename, 'text/html; charset=utf-8')
+
 
 class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
