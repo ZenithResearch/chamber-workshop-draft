@@ -8,6 +8,6 @@ Plain HTML and CSS, with the original Times-and-navy agenda and native activity 
 - `notes/activity-NN.html`: readable facilitator notes and citations, separate from the slides.
 - `resources.html`: shared supporting works.
 
-Welcome contains the supplied outline and Sovereignty draft. Foundations contains the facilitator notes and a closing slide connecting the learning cycle to independent working environments and scoped access. Timing is to determine; other activity slots and unspecified content remain blank. The OECD report remains a proposed source, with detailed citation passages pending.
+Only the supplied Welcome outline and Sovereignty draft are populated. Welcome timing is to determine; other activity slots and unspecified content remain blank. The OECD report remains a proposed source, with detailed citation passages pending.
 
 The old `../workshop-agenda` repository is unchanged. Reference notes remain outside this site at `../Workshop_Reference_Notes_2026-11-04.md`.
