@@ -10,6 +10,6 @@ For a phone on the same Wi-Fi, run `python3 -B -u server.py --host YOUR_LOCAL_IP
 - `notes/activity-NN.html`: readable facilitator notes and citations, separate from the slides.
 - `resources.html`: shared supporting works.
 
-Welcome and Foundations each have seven populated draft slides, including the Foundations closing summary. Foundations slide text mirrors its facilitator notes; Welcome slides expand the supplied outline, with separate notes retained. Timing is to determine; other activity slots remain blank. The OECD report remains a proposed source, with detailed citation passages pending.
+Welcome and Foundations each have seven populated draft slides. Demo has its agreed summary and notes. Exercise has a short outline linking to six slides, including SOP creation; its SOP template and prepared example remain proposed materials to prepare. Timing is to determine; later activity slots remain blank. The OECD report remains a proposed source, with detailed citation passages pending.
 
 The old `../workshop-agenda` repository is unchanged. Reference notes remain outside this site at `../Workshop_Reference_Notes_2026-11-04.md`.

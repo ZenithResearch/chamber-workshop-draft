@@ -19,8 +19,8 @@ for activity in range(1, 10):
         FILES[f'/{filename}'] = (filename, 'text/html; charset=utf-8')
 
 
-for activity in (1, 2):
-    for slide in range(2, 8):
+for activity, slide_count in ((1, 7), (2, 7), (4, 6)):
+    for slide in range(2, slide_count + 1):
         filename = f'slides/activity-{activity:02d}-slide-{slide:02d}.html'
         FILES[f'/{filename}'] = (filename, 'text/html; charset=utf-8')
 
