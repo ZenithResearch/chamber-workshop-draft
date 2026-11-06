@@ -2,6 +2,8 @@
 
 Plain HTML and CSS, with the original Times-and-navy agenda and native activity drawers. No browser JavaScript or build step. Run `python3 -B -u server.py` and visit http://127.0.0.1:8767.
 
+For a phone on the same Wi-Fi, run `python3 -B -u server.py --host YOUR_LOCAL_IP` and open `http://YOUR_LOCAL_IP:8767`. The server still serves only the explicitly listed workshop files.
+
 - `index.html`: agenda and concise activity outlines.
 - `plans/activity-NN.html`: activity summary and outline linking directly to each slide.
 - `slides/activity-NN.html`: first slide of an activity; additional Welcome slides use `activity-01-slide-NN.html`. Each page shows only the slide and simple navigation.

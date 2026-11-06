@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Serve only the fresh workshop draft on loopback."""
+"""Serve only the fresh workshop draft on a selected local interface."""
+import argparse
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import urlsplit
@@ -25,7 +26,8 @@ for slide in range(2, 8):
 
 class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
-        if self.headers.get('Host', '').split(':', 1)[0] not in {'127.0.0.1', 'localhost'}:
+        allowed_hosts = {'127.0.0.1', 'localhost', self.server.server_address[0]}
+        if self.headers.get('Host', '').split(':', 1)[0] not in allowed_hosts:
             self.send_error(403)
             return
         path = urlsplit(self.path).path
@@ -49,8 +51,11 @@ class Handler(BaseHTTPRequestHandler):
 
 
 if __name__ == '__main__':
-    server = ThreadingHTTPServer(('127.0.0.1', 8767), Handler)
-    print('Fresh workshop draft: http://127.0.0.1:8767', flush=True)
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--host', default='127.0.0.1', help='Local interface address (default: 127.0.0.1)')
+    args = parser.parse_args()
+    server = ThreadingHTTPServer((args.host, 8767), Handler)
+    print(f'Fresh workshop draft: http://{args.host}:8767', flush=True)
     try:
         server.serve_forever()
     except KeyboardInterrupt:
