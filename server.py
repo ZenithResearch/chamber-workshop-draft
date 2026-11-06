@@ -13,7 +13,7 @@ FILES = {
     '/styles.css': ('styles.css', 'text/css; charset=utf-8'),
 }
 
-for activity in range(1, 10):
+for activity in range(1, 7):
     for folder in ('plans', 'slides', 'notes'):
         filename = f'{folder}/activity-{activity:02d}.html'
         FILES[f'/{filename}'] = (filename, 'text/html; charset=utf-8')
