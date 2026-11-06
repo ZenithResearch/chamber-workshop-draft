@@ -15,3 +15,5 @@ Welcome and Foundations each have seven populated draft slides. Demo has its agr
 The old `../workshop-agenda` repository is unchanged. Reference notes remain outside this site at `../Workshop_Reference_Notes_2026-11-04.md`.
 
 The agenda contains six activities: Welcome, Foundations, Demo, Exercise, Looking Forward and Questions. Unused placeholder slide and notes pages still exist for some of these activities, but are not linked from the agenda.
+
+Navigation is checked with python3 -B check_navigation.py. Every served detail page has one sticky “Back to agenda” link; slide Previous/Next, outline and resource links stay available. External readings open in another tab so the workshop remains open.
