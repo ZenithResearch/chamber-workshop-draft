@@ -1,35 +1,51 @@
-# Chamber workshop draft
+# README.md
 
-Plain HTML and CSS, with the original Times-and-navy agenda and native activity drawers. No browser JavaScript. Local serving needs no build step. Run `python3 -B -u server.py` and visit http://127.0.0.1:8767.
+A guide to the Victoria Chamber Workshop draft for reviewers, facilitators and participants.
 
-For a phone on the same Wi-Fi, run `python3 -B -u server.py --host YOUR_LOCAL_IP` and open `http://YOUR_LOCAL_IP:8767`. The server still serves only the explicitly listed workshop files.
+The workshop explores manageable AI adoption, data strategy, operational efficiency, competitive advantage and control over software dependencies. Self-sovereignty, efficiency and verifiability guide the discussion. The intended outcome is practical experience, a useful business decision and a next experiment.
 
-- `index.html`: agenda and concise activity outlines.
-- `plans/activity-NN.html`: activity summary and outline linking directly to each slide.
-- `slides/activity-NN.html`: first slide of an activity; additional slides use `activity-NN-slide-NN.html`. Each page shows only the slide and simple navigation.
-- `notes/activity-NN.html`: readable facilitator notes and citations, separate from the slides.
-- `resources.html`: shared supporting works.
+## Start with the agenda
 
-Welcome and Foundations each have seven populated draft slides. Demo has its agreed summary and notes. Exercise has a short outline linking to six slides, including SOP creation; its SOP template and prepared example remain proposed materials to prepare. Timing is to determine; Looking Forward has six draft slides; Questions has five. Both retain their agreed outlines and proposed resources. The OECD report remains a proposed source, with detailed citation passages pending.
+Open the agenda using Back to agenda and expand an activity to see its outline and resources. The current order is Welcome, Foundations, Demo, Exercise, Looking Forward and Questions.
 
-The old `../workshop-agenda` repository is unchanged. Reference notes remain outside this site at `../Workshop_Reference_Notes_2026-11-04.md`.
+- **Plan / Outline:** read what the activity is intended to cover.
+- **Slides:** open the first slide, or select a topic directly from the outline. Previous and Next move through the activity.
+- **Facilitator notes:** read the separate delivery notes where provided. Welcome and Foundations have populated notes.
+- **Activity resources:** find supporting materials for preparation and delivery, including relevant repositories.
+- **Attendee resources:** find materials intended for participants.
+- **Back to agenda:** return to the overview from any detail page. External resources open in a new tab so the workshop stays open.
 
-The agenda contains six activities: Welcome, Foundations, Demo, Exercise, Looking Forward and Questions. Unused placeholder slide and notes pages still exist for some of these activities, but are not linked from the agenda.
+For an overview of supporting materials, use [Resources](resources.html). Agents can use [AGENTS.md](agents.html) for object definitions, page relationships and editing rules.
 
-Navigation is checked with python3 -B check_navigation.py. Every served detail page has one sticky “Back to agenda” link; slide Previous/Next, outline and resource links stay available. External readings open in another tab so the workshop remains open.
+## What is ready to review
 
-## Hosting
+Welcome and Foundations each have seven populated draft slides and separate notes. Demo has an outline for a shared-screen demonstration. Exercise has an outline and six draft slides. Looking Forward has an outline and six draft slides; Questions has an outline and five draft slides.
 
-Live site: https://chamber-workshop-draft.vercel.app
+The whole package remains a draft. Timings are To determine. Materials marked To prepare are not yet available, including the SOP template and Five Activities worksheet. The OECD reading is proposed; detailed citation passages remain to be selected. Repository links provide source references without establishing that installation or integration has been verified.
 
-Hosted on Vercel under ZenithResearch, project chamber-workshop-draft. The GitHub repository remains private; the deployed workshop pages are public.
+Use the agenda links to review the intended package. Some unlinked slide and notes files remain as placeholders.
 
-To publish an update from this repository:
+## For maintainers
+
+This repository uses plain HTML and CSS, the Times-and-navy design and native activity drawers. No browser JavaScript or Sites tools. See [AGENTS.md](agents.html) before editing.
+
+Run locally:
+
+    python3 -B render_guides.py
+    python3 -B -u server.py
+
+Open http://127.0.0.1:8767. For a phone on the same Wi-Fi, add --host YOUR_LOCAL_IP to the server command and open that address on port 8767.
+
+README.md and AGENTS.md are the guide sources. render_guides.py generates their readable HTML pages; build_static.py refreshes those pages and runs the navigation check before packaging the public site.
+
+Live site: [Victoria Chamber Workshop](https://chamber-workshop-draft.vercel.app) (new tab). Hosted on Vercel under ZenithResearch, project chamber-workshop-draft. The source repository is private; the deployed pages are public.
+
+Publish an update:
 
     vercel link --yes --project chamber-workshop-draft --scope zenith-research
     python3 -B build_static.py
     vercel deploy --prebuilt --prod --yes --scope zenith-research
 
-The packager runs the navigation check and copies only server.py's allowlisted HTML and CSS into the ignored .vercel/output/static directory. Python source, repository documentation and reference notes are excluded. Deployment preserves the no-script content security policy and direct .html links.
+Deployments are manual; pushing to GitHub alone does not publish changes. The packager includes only the server's allowlisted public files, including these two guides. Other repository documentation, Python source and separate reference notes are excluded.
 
-Deployments are manual. Vercel could not connect the private GitHub repository during setup, so pushing to GitHub alone does not publish changes.
+Check navigation with python3 -B check_navigation.py. The older workshop-agenda repository remains separate.

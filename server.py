@@ -11,6 +11,10 @@ FILES = {
     '/index.html': ('index.html', 'text/html; charset=utf-8'),
     '/resources.html': ('resources.html', 'text/html; charset=utf-8'),
     '/styles.css': ('styles.css', 'text/css; charset=utf-8'),
+    '/readme.html': ('readme.html', 'text/html; charset=utf-8'),
+    '/agents.html': ('agents.html', 'text/html; charset=utf-8'),
+    '/README.md': ('README.md', 'text/plain; charset=utf-8'),
+    '/AGENTS.md': ('AGENTS.md', 'text/plain; charset=utf-8'),
 }
 
 for activity in range(1, 7):

@@ -10,6 +10,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 
 def main():
+    subprocess.run([sys.executable, "-B", str(ROOT / "render_guides.py")], cwd=ROOT, check=True)
     subprocess.run([sys.executable, "-B", str(ROOT / "check_navigation.py")], cwd=ROOT, check=True)
     files = runpy.run_path(str(ROOT / "server.py"))["FILES"]
     output = ROOT / ".vercel" / "output"
@@ -23,6 +24,11 @@ def main():
         shutil.copyfile(ROOT / filename, destination)
     config = {
         "version": 3,
+        "overrides": {
+            filename: {"contentType": media}
+            for filename, media in files.values()
+            if filename.endswith(".md")
+        },
         "routes": [
             {
                 "src": "/(.*)",
