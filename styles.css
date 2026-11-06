@@ -172,3 +172,13 @@ button { padding: 7px 12px; font: inherit; cursor: pointer; color: #000; backgro
   .black-box li + li::before { content: "↓"; top: -26px; left: calc(50% - 6px); }
   .ownership-requirements dl > div, .service-roles > div, .process-benefits > div { grid-template-columns: 1fr; gap: 6px; }
 }
+
+/* Draft slide content stays readable as notes, without record fields or drawers. */
+.slide-note-content { font-size: 18px; line-height: 1.4; }
+.slide-note-content > p { margin: 0 0 18px; }
+.slide-note-content ul { padding-left: 24px; margin: 0 0 18px; }
+.slide-note-content li + li { margin-top: 10px; }
+.slide-note-content > :last-child { margin-bottom: 0; }
+@media (max-width: 480px) {
+ .slide-note-content { font-size: 17px; }
+}

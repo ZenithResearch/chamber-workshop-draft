@@ -19,9 +19,10 @@ for activity in range(1, 10):
         FILES[f'/{filename}'] = (filename, 'text/html; charset=utf-8')
 
 
-for slide in range(2, 8):
-    filename = f'slides/activity-01-slide-{slide:02d}.html'
-    FILES[f'/{filename}'] = (filename, 'text/html; charset=utf-8')
+for activity in (1, 2):
+    for slide in range(2, 8):
+        filename = f'slides/activity-{activity:02d}-slide-{slide:02d}.html'
+        FILES[f'/{filename}'] = (filename, 'text/html; charset=utf-8')
 
 
 class Handler(BaseHTTPRequestHandler):
