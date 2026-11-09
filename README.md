@@ -21,6 +21,6 @@ For an overview of supporting materials, use [Resources](resources.html).
 
 Welcome and Foundations each have seven populated draft slides and separate notes. Demo has an outline for a shared-screen demonstration. Exercise has an outline and six draft slides. Looking Forward has an outline and eleven draft slides; Questions has an outline and five draft slides.
 
-The whole package remains a draft. Timings are To determine. Materials marked To prepare are not yet available, including the SOP template and Five Activities worksheet. The OECD reading is proposed; detailed citation passages remain to be selected. Repository links provide source references without establishing that installation or integration has been verified.
+The whole package remains a draft. Timings are To determine. The [SOP worksheet](output/pdf/sop-worksheet.pdf), [worked example](resources/sop-example.md), and [facilitator field guide](resources/sop-field-guide.md) are available for review. The worksheet follows the Hub process schema and can be completed digitally or by hand. Materials marked To prepare, including the Five Activities worksheet, are not yet available. The OECD reading is proposed; detailed citation passages remain to be selected. Repository links provide source references without establishing that installation or integration has been verified.
 
 Use the agenda links to explore the workshop in order or return to a topic you want to review.
