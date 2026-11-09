@@ -19,7 +19,7 @@ W, H = letter
 def build():
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     c = canvas.Canvas(str(OUTPUT), pagesize=letter, invariant=1)
-    c.setTitle("SOP Worksheet | Victoria Chamber Workshop")
+    c.setTitle("SOP Worksheet | Workshop")
     c.setAuthor("Zenith")
     c.setSubject("A plain-language planning worksheet based on the Hub Markdown process contract.")
 
@@ -44,7 +44,7 @@ def build():
 
     def header(kicker, title, subtitle):
         text(48, 38, "ZENITH", 12, "Times-Bold", NAVY)
-        text(353, 38, "VICTORIA CHAMBER WORKSHOP", 9, color=GRAY)
+        text(510, 38, "WORKSHOP", 9, color=GRAY)
         c.setStrokeColor(LINE)
         c.setLineWidth(0.6)
         c.line(48, H-49, 564, H-49)
