@@ -14,60 +14,52 @@ The compiler and explicit Variables/step rules take precedence over the short in
 
 ## Participant use
 
-The worksheet is two landscape pages. Complete the process name, purpose, and information table on page 1. Write up to three steps side by side on page 2, then use the work map on page 1 to plan one run. Leave unused steps and tasks blank. Keep answers short enough to remain visible when printed. For longer processes, use additional copies with continued step and task numbers; when completing digitally, keep additional copies as separate files so repeated form-field names do not overwrite each other. Use extra paper or a separate file if the information table needs more rows. Print at actual size on landscape Letter paper; for duplex printing, flip on the short edge.
+Print the single page on landscape Letter paper, or open it in a form-capable PDF reader, type in the boxes, and save a copy. The PDF sends no information to the workshop site.
 
-Use the same short name for an information item everywhere. Record all inputs and outputs in the information table, including information supplied at the start. A newly created value has one producing step; if a later step changes it, give the changed value a new name. Write missing-data handling, approval points, and checks directly in the step's instructions.
+Choose a familiar recurring task. Write the desired result and what starts the work. Fill in First, Next, and Then with short phrases. Leave unused steps blank. Finish with a result check, a reason to stop and ask for help, and the people who check and receive the result. The arrows make a simple sequence visible. For a branching or longer process, sketch the additional steps on separate paper and review them with the facilitator.
 
-Downloading and opening the PDF in a form-capable reader allows typed answers to be saved. It can also be printed blank or with completed answers. The PDF sends no information to the workshop site.
+The participant page deliberately omits schema terms, the Variables table, and a second copy of the task plan. It is a starting draft. The facilitator confirms the missing detail and translates it into the Hub contract before use.
 
-## Field mapping
+## Hub field mapping
 
-| Worksheet prompt | Hub representation | Review needed |
+| Worksheet prompt | Hub representation | Facilitator follow-up |
 | --- | --- | --- |
-| Process name | Top-level `#` title | Use a specific task name. |
-| When is it used, and what should it produce? | `## What this process does` | State the purpose, trigger, and intended result in prose. |
-| Item name, type, meaning | `## Variables` table: Variable, Type, Description | Include every step input/output. Use unique names in backticks. |
-| Source | Facilitation note; root inputs and producer links are derived | Check that each item is available at the start or produced by one earlier step. Do not add a fourth column to the Hub contract. |
-| Step number and name | `### Step N -- Title` | Use consecutive, unique step numbers. |
-| Person or role | `**Assignee:**` | Translate a role description to the intended assignment. |
-| Skill needed | `**Skills:**` | Map a plain description to an existing skill/worker capability; do not treat a description as a registered identifier. |
-| Inputs | `**Input:**` | Reference declared information names only. |
-| What happens? | `**Processing:**` | Required for every step. Include writes, checks, approvals, and failure handling. |
-| Outputs | `**Output (process state):**` | Translate named values to JSON keys matching the Variables table; omit if there are no new values. |
-| Required systems or workspaces | `**Required Resources:**` | Declare systems, workspaces, or other non-slot capabilities on the step that uses them. |
-| Helpful resources / Optional | `**Suggested Resources:**` | Optional; the step must be able to run without them. |
+| A task I do often | Top-level `#` title | Confirm a specific process name. |
+| The result I want; When do you start? | `## What this process does` | Combine the purpose, trigger, and intended result. |
+| First / Next / Then | `### Step N -- Title` | Derive a short title from each action and confirm the order. |
+| Who does it? | `**Assignee:**` | Resolve the intended person or role. Confirm skills separately. |
+| What do they do? | `**Processing:**` | Expand short phrases into usable instructions, including writes, decisions, and checks. |
+| What do they need? | `**Input:**`, step resources, skills, or tools, depending on the answer | Separate information from systems, workspace access, abilities, and actions. Do not copy this mixed answer into a single schema field. Ask which resources are required and which are merely helpful. |
+| What do they pass on? | `**Output (process state):**` for new information | Identify the actual named values and their contents. A system or workspace is a resource, not an output variable. Use no output block if the step produces no new value. |
+| Check the result | Checks in the relevant step's Processing | Confirm observable evidence and any approval needed before the next step. |
+| If something goes wrong | Failure handling in the relevant step's Processing | Confirm where to stop, who to ask, and how to resume. |
+| Hand it over | Review and delivery instructions in the relevant step's Processing | Confirm the reviewer, recipient, and access to the result. |
 
-Types can be written in ordinary language on the worksheet: text -> `string`, number -> `number`, yes/no -> `boolean`, list -> `array`, record -> `object`. Preserve any needed format detail, such as a path or date, during review. These are authoring conventions, not a claim that this compiler enforces every type or business rule.
+Build the exhaustive `## Variables` table with the participant after reviewing the steps. Give every input and output a unique name, type, and description; distinguish information available at the start from information produced by a step. Each new value has one producer. If a later step changes it, give the changed value a new name. Use these same names in Input references and Output JSON keys. Never infer an unknown type or missing information without confirmation.
 
-## DevGraph work map
+Ordinary type descriptions can be translated as text -> `string`, number -> `number`, yes/no -> `boolean`, list -> `array`, and record -> `object`. Preserve needed format details, such as a path or date. These are authoring conventions, not a claim that the compiler enforces every business rule.
 
-The right half of page 1 is a planning exercise for one run of the SOP. It uses the [DevGraph workflow contract](https://github.com/ZenithResearch/devgraph/blob/6789e9e754c00339db34801a9c4615fa9276a740/ontology/workflows.md) and [versioned workflow definitions](https://github.com/ZenithResearch/devgraph/blob/6789e9e754c00339db34801a9c4615fa9276a740/ontology/workflows.json), pinned to `6789e9e754c00339db34801a9c4615fa9276a740`. This is a source mapping, not verification of an installed DevGraph service.
+## DevGraph mapping
 
-| Worksheet box | DevGraph meaning | Facilitation note |
-| --- | --- | --- |
-| Issue / result | One operational outcome to deliver | Describe this run, such as reviewing today's customer quote. The reusable SOP remains a separate document. |
-| Task 1-3 / step 1-3 | Concrete work belonging to the Issue | The connecting tree shows parentage, not execution order. One Task per step is an exercise convention, not a schema requirement. |
-| Needs task no. / none | A task dependency | If Task 2 needs Task 1, the dependency points Task 2 -> Task 1. Avoid self-dependencies and cycles. Tasks may run independently. |
-| Done when... | Acceptance criterion for that Task | Write an observable check, such as a recorded approval or rejection with a reason. |
-| Review / evidence | Supporting Artifact or ExternalLink, and later review evidence | Identify the actual result or check for each Task. A planned check is not evidence that it has passed. |
-| Handoff / checker and recipient | Review and handoff planning | The receiving person must be able to use the result. Writing a name does not record a workflow approval. |
+The connected step boxes preserve a simple work-planning exercise without putting DevGraph vocabulary on the participant page. This mapping uses the pinned [workflow contract](https://github.com/ZenithResearch/devgraph/blob/6789e9e754c00339db34801a9c4615fa9276a740/ontology/workflows.md) and [workflow definitions](https://github.com/ZenithResearch/devgraph/blob/6789e9e754c00339db34801a9c4615fa9276a740/ontology/workflows.json), at commit `6789e9e754c00339db34801a9c4615fa9276a740`. It describes source behavior, not a verified installed service.
 
-For the quote example: the Issue is “Review and record this customer quote.” Task 1 prepares the draft and needs no other task; Task 2 reviews it and needs Task 1; Task 3 saves the draft and decision and needs Tasks 1 and 2. Suitable checks are a draft with scope and price, a decision with a reason, and a saved record that can be opened. Evidence includes the draft, decision, and saved-record path. The manager reviews the result and the office coordinator receives the record.
+- Use the desired result to frame an Issue for one specific run. Keep the reusable SOP as a separate document.
+- Each action box can become a Task belonging to that Issue. One Task per step is an exercise convention, not a schema requirement.
+- The printed arrows show the order of work and handoffs. They are not literal DevGraph dependency arrows: when Task 2 needs Task 1, the dependency points Task 2 -> Task 1. Confirm each dependency from what a step needs and what an earlier step supplies; do not infer a dependency solely from the layout. Independent work can run in parallel.
+- Turn the result check into explicit acceptance criteria for the relevant work. Ask what actual document, result, or check provides evidence. Planned checks do not prove completion.
+- Use the final two boxes to discuss blockers, review, and handoff. A written reviewer name does not record approval, and filling the worksheet does not mark a Task Done.
 
-In the pinned source, Issues and Tasks use `execution.v1`: intake and requirements, baseline, implementation, review, and verified handoff before Done. The worksheet collects planning inputs for that flow; it does not implement the full stage sequence or clear its gates. Workflow stage, progress, parentage, and dependency are separate concepts. Do not mark work Done merely because these boxes are filled. Actual completion requires the applicable approvals, evidence, requirement review, technical clearance, and handoff in DevGraph. These work-map fields do not become Hub Variables or extra process headings.
+The pinned execution workflow requires requirements and a baseline before implementation, followed by review and verified handoff. The worksheet gathers starting information for this flow; it does not implement its stages or clear its gates. Confirm per-task criteria, applicable approvals, evidence, technical clearance, and handoff in DevGraph before completion. DevGraph planning fields do not become extra Hub headings or Variables.
 
-## Facilitator setup
+For the quote example: First prepares a draft using request details and a price list; Next reviews the draft and records a decision; Then saves the draft and decision. The manager checks the decision, and the office coordinator receives the record. Useful evidence is a draft with scope and price, a decision with a reason, and a saved record that opens successfully.
 
-To keep the participant pages compact, resolve technical setup separately during review: `**Executor:**` is optional and separate from the assignee; `**Tools:**` contains exact registry-backed actions, one per line; `**Toolsets:**` contains optional named groups. Do not infer an executor from a skill name or invent registered identifiers. Retain these declarations on the appropriate Hub step when required by the process.
+## Facilitator setup and review
 
-## Review before use
+- Resolve skill descriptions to existing `**Skills:**` capabilities. Confirm an optional `**Executor:**` separately from the assignee.
+- Declare `**Required Resources:**` and optional `**Suggested Resources:**` on the steps that use them. Documenting a resource does not authorize access.
+- Use exact registry-backed names for `**Tools:**` and optional `**Toolsets:**`; do not invent identifiers.
+- Confirm every named input/output appears once in Variables. Check that all inputs are available before use and each new value has one producer.
+- Every step must have explicit Processing instructions. Describe writes there and declare the required resource. Do not use deprecated labels such as `Output (vault)`.
+- Compile and review the finished Markdown in the target Hub environment before execution. Successful compilation does not prove that the process meets business needs.
 
-- Every named input and output appears once in Variables with a type and meaning.
-- Each new value has one producer. Inputs are available before their consuming step.
-- Every step has explicit Processing instructions.
-- Resources and tools are declared on their steps, not as Variables or a global capability block. An application is a resource; an actual file path can be a named information value.
-- Writes to a system are described in Processing and use a required resource. Do not use deprecated labels such as `Output (vault)`.
-- Skills, tools, assignments, and executors are resolved against the intended environment. Documenting a resource does not authorize access to it.
-- The finished Markdown is compiled and reviewed in the target Hub environment before execution. A successful compile does not prove that the work meets business needs.
-
-The [worked example](sop-example.md) shows a small quote-review process using the same fields. It is illustrative and is not a deployed integration.
+The [worked example](sop-example.md) shows the expanded Hub contract for a quote-review process. It is illustrative and is not a deployed integration.
