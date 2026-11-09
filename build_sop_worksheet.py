@@ -1,39 +1,46 @@
 #!/usr/bin/env python3
-"""Build the Hub-based SOP worksheet. No PDF dependency is needed to serve it.
+"""Build the two-page Hub SOP worksheet and DevGraph work map.
 
 uv run --with reportlab==5.1.0 python build_sop_worksheet.py
 """
 from pathlib import Path
 
 from reportlab.lib.colors import HexColor, white
-from reportlab.lib.pagesizes import letter
+from reportlab.lib.pagesizes import landscape, letter
 from reportlab.lib.utils import simpleSplit
 from reportlab.pdfgen import canvas
 
 ROOT = Path(__file__).resolve().parent
 OUTPUT = ROOT / "output/pdf/sop-worksheet.pdf"
 NAVY, INK, GRAY, LINE = map(HexColor, ("#000080", "#202020", "#555555", "#999999"))
-W, H = letter
+W, H = landscape(letter)
+HUB = "https://github.com/ZenithResearch/hub/blob/17796093f6bbf766d0a642709d553ae121eb7181/base/ops/processes/index.md"
+DEVGRAPH = "https://github.com/ZenithResearch/devgraph/blob/6789e9e754c00339db34801a9c4615fa9276a740/ontology/workflows.md"
 
 
 def build():
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    c = canvas.Canvas(str(OUTPUT), pagesize=letter, invariant=1)
+    c = canvas.Canvas(str(OUTPUT), pagesize=(W, H), invariant=1)
     c.setTitle("SOP Worksheet | Workshop")
     c.setAuthor("Zenith")
-    c.setSubject("A plain-language planning worksheet based on the Hub Markdown process contract.")
+    c.setSubject("Hub process planning with a DevGraph Issue, Task, dependency and review exercise.")
 
     def text(x, y, value, size=11, font="Times-Roman", color=INK):
         c.setFillColor(color)
         c.setFont(font, size)
         c.drawString(x, H-y, value)
 
-    def para(x, y, value, width=504, size=11, leading=14):
+    def para(x, y, value, width, size=11, leading=13):
         for line in simpleSplit(value, "Times-Roman", size, width):
             text(x, y, line, size)
             y += leading
 
-    def field(name, label, x, y, w, h, multiline=True, maxlen=400, border=True):
+    def line(x1, y1, x2, y2):
+        c.setStrokeColor(LINE)
+        c.setLineWidth(0.65)
+        c.line(x1, H-y1, x2, H-y2)
+
+    def field(name, label, x, y, w, h, multiline=True, maxlen=160, border=True):
         c.acroForm.textfield(
             name=name, tooltip=label, x=x, y=H-y-h, width=w, height=h,
             fontName="Helvetica", fontSize=10, textColor=INK, fillColor=white,
@@ -43,95 +50,92 @@ def build():
         )
 
     def header(kicker, title, subtitle):
-        text(48, 38, "ZENITH", 12, "Times-Bold", NAVY)
-        text(510, 38, "WORKSHOP", 9, color=GRAY)
-        c.setStrokeColor(LINE)
-        c.setLineWidth(0.6)
-        c.line(48, H-49, 564, H-49)
-        text(48, 71, kicker, 9, color=GRAY)
-        text(48, 101, title, 25, "Times-Bold", NAVY)
-        para(48, 123, subtitle, width=516)
+        text(36, 29, "ZENITH", 12, "Times-Bold", NAVY)
+        text(702, 29, "WORKSHOP", 9, color=GRAY)
+        line(36, 40, 756, 40)
+        text(36, 59, kicker, 9, color=GRAY)
+        text(36, 86, title, 25, "Times-Bold", NAVY)
+        text(36, 106, subtitle)
 
     def footer(n):
-        c.setStrokeColor(LINE)
-        c.line(48, 49, 564, 49)
-        text(48, 760, "SOP worksheet  /  Hub process format", 9, color=GRAY)
-        text(291, 760, "Hub schema reference", 9, color=NAVY)
-        c.linkURL("https://github.com/ZenithResearch/hub/blob/17796093f6bbf766d0a642709d553ae121eb7181/base/ops/processes/index.md", (291, 27, 385, 40), relative=0)
-        text(523, 760, f"{n} of 4", 9, color=GRAY)
+        line(36, 584, 756, 584)
+        text(36, 599, "Type in the boxes and save a copy, or print and write by hand.", 9, color=GRAY)
+        for x, label, url, width in [(475, "Hub schema", HUB, 56), (552, "DevGraph workflow", DEVGRAPH, 85)]:
+            text(x, 599, label, 9, color=NAVY)
+            c.linkURL(url, (x, 10, x+width, 23), relative=0)
+        text(722, 599, f"{n} of 2", 9, color=GRAY)
 
-    header("01  /  DEFINE THE PROCESS", "Standard operating procedure",
-           "Describe one recurring task so another person can follow it. Use brief, specific answers.")
-    text(48, 161, "Process name", 12, "Times-Bold")
-    field("process_title", "Process title: name the recurring task", 48, 171, 516, 28, False, 80)
-    text(48, 222, "What does this process do?", 12, "Times-Bold")
-    text(48, 239, "State when it is used and the result it should produce.", 10)
-    field("process_description", "What this process does", 48, 250, 516, 59, maxlen=330)
-    text(48, 335, "Information used or created", 15, "Times-Bold", NAVY)
-    para(48, 353, "Give each item one short name and use that same name in the steps. Include every input and output. Record systems, workspace access, and tools on the step pages instead.", width=516)
-    text(48, 391, "Types: text, number, yes/no, list, or a record with several details.", 10, color=GRAY)
-    xs = [48, 158, 235, 444, 564]
-    for x, a, b in [(48, "Item name", "e.g., request_details"), (158, "Type", "e.g., text"), (235, "Meaning", "What does this item contain?"), (444, "Source", "At start, or step no.")]:
-        text(x+6, 416, a, 10, "Times-Bold")
-        text(x+6, 430, b, 9)
+    header("01  /  DEFINE AND PLAN", "Standard operating procedure",
+           "Choose a recurring task. Describe the process, then plan one run of it. Keep answers brief and specific.")
+    text(36, 142, "Process name", 12, "Times-Bold")
+    field("process_title", "Process title: name the recurring task", 36, 151, 348, 27, False, 60)
+    text(36, 202, "When is it used, and what should it produce?", 12, "Times-Bold")
+    field("process_description", "What this process does: trigger and intended result", 36, 211, 348, 52, maxlen=240)
+    text(36, 291, "Information used or created", 15, "Times-Bold", NAVY)
+    para(36, 308, "Name every input and output. Reuse these names in the steps. Types: text, number, yes/no, list, or record.", 348, 10, 12)
+    xs = [36, 144, 194, 316, 384]
+    for x, label in zip(xs, ["Item name", "Type", "Meaning", "Source*"]):
+        text(x+5, 345, label, 10, "Times-Bold")
     for row in range(6):
-        top=440+row*39
-        for col, (key, label, limit) in enumerate([
-            ("name", "Variable name", 44), ("type", "Variable type", 32),
-            ("description", "Variable description", 105), ("source", "Available at start or produced by which step", 40),
-        ]):
-            field(f"variable_{row+1}_{key}", f"Information item {row+1}: {label}", xs[col]+3, top+3,
-                  xs[col+1]-xs[col]-6, 33, maxlen=limit, border=False)
-    c.setStrokeColor(LINE)
-    c.setLineWidth(0.65)
+        for col, (key, limit) in enumerate([("name", 32), ("type", 14), ("description", 52), ("source", 24)]):
+            field(f"variable_{row+1}_{key}", f"Information item {row+1}: {key}", xs[col]+2,
+                  355+row*30, xs[col+1]-xs[col]-4, 26, maxlen=limit, border=False)
     for x in xs:
-        c.line(x, H-402, x, H-674)
-    for top in [402, 440, 479, 518, 557, 596, 635, 674]:
-        c.line(48, H-top, 564, H-top)
-    text(48, 696, "Use the next three pages for steps. Add sheets if needed; keep names and numbers unique.", 10)
-    text(48, 713, "Type in the boxes and save a copy, or print and write by hand.", 10, color=GRAY)
+        line(x, 332, x, 533)
+    for y in [332, 353, 383, 413, 443, 473, 503, 533]:
+        line(36, y, 384, y)
+    text(36, 551, "* At start, or the step number that creates it.", 10)
+    text(36, 566, "Put systems and workspace access on page 2.", 10, color=GRAY)
+
+    text(408, 142, "Map one run in DevGraph", 15, "Times-Bold", NAVY)
+    text(408, 160, "Issue = the result to deliver. Tasks = the work that gets it done.", 10)
+    text(408, 182, "Issue / What result will you deliver this time?", 11, "Times-Bold")
+    field("work_issue", "DevGraph Issue: result for one run of this process", 408, 190, 348, 38, maxlen=180)
+    # A containment tree: all three Tasks belong to the Issue; no ordering is implied.
+    line(582, 228, 582, 239)
+    line(462, 239, 702, 239)
+    for task, x in enumerate([408, 528, 648], 1):
+        line(x+54, 239, x+54, 249)
+        text(x, 262, f"Task {task} / step {task}", 11, "Times-Bold", NAVY)
+        field(f"work_task_{task}_title", f"DevGraph Task {task}: short action name", x, 271, 108, 38, maxlen=60)
+        text(x, 325, "Needs task no. / none", 10)
+        field(f"work_task_{task}_needs", f"Task {task}: depends on task numbers, or none", x, 333, 108, 25, False, 18)
+        text(x, 375, "Done when...", 11, "Times-Bold")
+        field(f"work_task_{task}_criterion", f"Task {task}: acceptance check", x, 383, 108, 48, maxlen=80)
+    text(408, 449, "Use the step names from page 2. Only add real dependencies.", 10)
+    text(408, 473, "Review / What evidence will show the work is complete?", 11, "Times-Bold")
+    field("work_evidence", "Review evidence: result or check for each task", 408, 481, 348, 30, maxlen=140)
+    text(408, 533, "Handoff / Who checks it, and who receives the result?", 11, "Times-Bold")
+    field("work_handoff", "Reviewer and recipient of the result", 408, 541, 348, 30, maxlen=140)
     footer(1)
     c.showPage()
 
-    for step in range(1, 4):
-        header(f"0{step+1}  /  DESCRIBE THE WORK", f"Step {step}",
-               "Describe one clear action. Use the information names from the first page.")
-        prefix=f"step_{step}_"
-        text(48, 154, "Step name", 12, "Times-Bold")
-        field(prefix+"title", f"Step {step}: title", 48, 164, 516, 25, False, 80)
-
-        text(48, 211, "Who does the work?", 12, "Times-Bold")
-        text(48, 227, "Person or role assigned to this step.", 10)
-        field(prefix+"assignee", f"Step {step}: Assignee", 48, 237, 245, 31, maxlen=90)
-        text(309, 211, "Skill needed", 12, "Times-Bold")
-        text(309, 227, "Name the skill, or describe the ability needed.", 10)
-        field(prefix+"skills", f"Step {step}: Skills", 309, 237, 255, 31, maxlen=100)
-
-        text(48, 291, "Inputs", 12, "Times-Bold")
-        text(48, 307, "Which named information items must be ready before this step begins?", 10)
-        field(prefix+"inputs", f"Step {step}: Input variable names", 48, 317, 516, 35, maxlen=210)
-
-        text(48, 375, "What happens in this step?", 12, "Times-Bold")
-        text(48, 391, "Include decisions, checks, approvals, and what to do if something is missing or goes wrong.", 10)
-        field(prefix+"processing", f"Step {step}: Processing instructions", 48, 401, 516, 83, maxlen=620)
-
-        text(48, 507, "Outputs", 12, "Times-Bold")
-        text(48, 523, "Name each new information item this step produces and what it contains, or write none.", 10)
-        field(prefix+"outputs", f"Step {step}: Output (process state), variable names and values", 48, 533, 516, 35, maxlen=210)
-
-        text(48, 591, "Required resources", 12, "Times-Bold")
-        text(48, 607, "Systems or workspaces this step needs access to.", 10)
-        field(prefix+"required_resources", f"Step {step}: Required Resources", 48, 617, 245, 32, maxlen=110)
-        text(309, 591, "Suggested resources", 12, "Times-Bold")
-        text(309, 607, "Helpful, but the step can run without them.", 10)
-        field(prefix+"suggested_resources", f"Step {step}: Suggested Resources (optional)", 309, 617, 255, 32, maxlen=110)
-
-        text(48, 672, "Hub setup, if known: use registered names. Otherwise leave these for the facilitator.", 9, color=GRAY)
-        for x, key, label in [(48, "executor", "Executor (runs the step)"), (223, "tools", "Tools (registered actions)"), (398, "toolsets", "Toolsets (tool groups)")]:
-            text(x, 689, label, 10)
-            field(prefix+key, f"Step {step}: {key.title()} (optional Hub setup)", x, 698, 166, 23, False, 28)
-        footer(step+1)
-        c.showPage()
+    header("02  /  WRITE THE STEPS", "How the work gets done",
+           "Use one box for each step. Match input and output names to page 1. Leave unused steps blank.")
+    for step, x in enumerate([36, 282, 528], 1):
+        prefix = f"step_{step}_"
+        text(x, 144, f"STEP {step}", 12, "Times-Bold", NAVY)
+        text(x+58, 144, "Name the action", 11)
+        field(prefix+"title", f"Step {step}: title", x, 153, 228, 29, False, 40)
+        text(x, 202, "Person or role", 11, "Times-Bold")
+        text(x+120, 202, "Skill needed", 11, "Times-Bold")
+        field(prefix+"assignee", f"Step {step}: Assignee", x, 210, 108, 28, maxlen=40)
+        field(prefix+"skills", f"Step {step}: Skills", x+120, 210, 108, 28, maxlen=40)
+        text(x, 258, "Inputs / What must be ready?", 11, "Times-Bold")
+        field(prefix+"inputs", f"Step {step}: Input variable names", x, 266, 228, 32, maxlen=80)
+        text(x, 318, "What happens?", 11, "Times-Bold")
+        text(x, 332, "Include checks and what to do if something fails.", 10)
+        field(prefix+"processing", f"Step {step}: Processing, checks, and failure handling", x, 340, 228, 62, maxlen=210)
+        text(x, 422, "Outputs / Name each result and its contents.", 11, "Times-Bold")
+        field(prefix+"outputs", f"Step {step}: Output process state names and contents; or none", x, 430, 228, 32, maxlen=80)
+        text(x, 482, "Required systems or workspaces", 11, "Times-Bold")
+        field(prefix+"required_resources", f"Step {step}: Required Resources", x, 490, 228, 28, maxlen=75)
+        text(x, 540, "Helpful resources / Optional", 11, "Times-Bold")
+        field(prefix+"suggested_resources", f"Step {step}: Suggested Resources", x, 548, 228, 28, maxlen=75)
+    for x in [273, 519]:
+        line(x, 132, x, 576)
+    footer(2)
+    c.showPage()
     c.save()
     print(OUTPUT)
 
