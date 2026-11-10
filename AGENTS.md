@@ -21,11 +21,11 @@ The guiding domains are self-sovereignty, efficiency and verifiability. Intended
 - **Repository:** a resource containing source code, specifications or documentation. A link identifies the source project; it does not establish installation readiness, integration compatibility or the scope of demonstrated capabilities.
 - **Citation:** a specific use of a resource to support a claim. It should identify the claim and the relevant source location, with qualifications where needed. A general resource link or proposed reading is not a completed citation.
 - **Evidence of success:** the observation or participant result proposed for assessing an activity. A success criterion is not a claim that the result has occurred.
-- **Status:** the maturity of content or supporting material. Draft, To prepare and To determine describe unfinished work; an existing file may still be a placeholder.
+- **Status:** the maturity of content or supporting material. Draft and To determine describe unfinished work; To confirm means the supporting material awaits confirmation. An existing file may still be a placeholder.
 
 ## Where to read
 
-- Agenda: activity order, summaries and drawers.
+- Agenda: activity order, summaries and drawers. Welcome and Foundations have 10 minutes each; Demo and Exercise have a 15-minute cap each; Looking Forward and Questions have a 10-minute cap each (70 minutes maximum).
 - Activity plans: plans/activity-01.html through plans/activity-06.html. Follow each activity's Outline or Plan link.
 - Slides: slides/activity-NN.html is the first slide; subsequent pages use slides/activity-NN-slide-SS.html. Use the links in the outline to select a topic.
 - Facilitator notes: notes/activity-NN.html. Welcome and Foundations have populated notes; other unlinked notes files are placeholders.
