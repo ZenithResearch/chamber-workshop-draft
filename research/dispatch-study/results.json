@@ -1,0 +1,329 @@
+{
+  "protocol": {
+    "version": 1,
+    "sizes": [
+      32,
+      128,
+      512,
+      2048
+    ],
+    "seeds": [
+      17,
+      43,
+      89
+    ],
+    "requests_per_seed_size": 240,
+    "timing_repetitions": 3,
+    "development_seed": 901,
+    "development_requests": 96,
+    "variants": [
+      "full_records",
+      "projected_records",
+      "indexed_projection"
+    ],
+    "record_fields": [
+      "id",
+      "skill",
+      "region",
+      "available",
+      "load",
+      "notes"
+    ],
+    "selection_rule": "available AND exact skill AND exact region; minimize (load,id)",
+    "task_mix": "60% routine, 20% absent skill, 10% missing field, 10% unauthorized",
+    "context_measure": "UTF-8 JSON bytes, NOT model tokens",
+    "timing": "Python perf_counter_ns; includes context construction/serialization and dispatch decision; excludes oracle, generation and index build (reported separately)",
+    "design": "Manually authored candidates frozen in source before test. Choose on development correctness and bytes. Test requests held out; no subsequent fitting."
+  },
+  "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O",
+  "python": "3.14.7 (main, Aug  5 2026, 10:29:49) [Clang 21.0.0 (clang-2100.1.1.101)]",
+  "source_sha256": "cb99d9efd89b4f86974ffa769be8a3002ab45d46f19bc8fd243950b6dc973fe3",
+  "selected": "indexed_projection",
+  "unique_test_cases": 2880,
+  "timed_executions": 25920,
+  "summaries": [
+    {
+      "n": 32,
+      "variant": "full_records",
+      "cases": 720,
+      "correct": 720,
+      "assigned": 219,
+      "mean_context_bytes": 13690.341666666667,
+      "mean_records_visited": 25.6,
+      "mean_ms": 0.03348357361111111,
+      "p95_ms": 0.047458
+    },
+    {
+      "n": 32,
+      "variant": "projected_records",
+      "cases": 720,
+      "correct": 720,
+      "assigned": 219,
+      "mean_context_bytes": 1530.3416666666667,
+      "mean_records_visited": 25.6,
+      "mean_ms": 0.013793938888888888,
+      "p95_ms": 0.02025
+    },
+    {
+      "n": 32,
+      "variant": "indexed_projection",
+      "cases": 720,
+      "correct": 720,
+      "assigned": 219,
+      "mean_context_bytes": 106.6625,
+      "mean_records_visited": 0.6027777777777777,
+      "mean_ms": 0.0020568388888888888,
+      "p95_ms": 0.003375
+    },
+    {
+      "n": 128,
+      "variant": "full_records",
+      "cases": 720,
+      "correct": 720,
+      "assigned": 409,
+      "mean_context_bytes": 54585.541666666664,
+      "mean_records_visited": 102.4,
+      "mean_ms": 0.12509145277777778,
+      "p95_ms": 0.172
+    },
+    {
+      "n": 128,
+      "variant": "projected_records",
+      "cases": 720,
+      "correct": 720,
+      "assigned": 409,
+      "mean_context_bytes": 5945.541666666667,
+      "mean_records_visited": 102.4,
+      "mean_ms": 0.05030881527777778,
+      "p95_ms": 0.071791
+    },
+    {
+      "n": 128,
+      "variant": "indexed_projection",
+      "cases": 720,
+      "correct": 720,
+      "assigned": 409,
+      "mean_context_bytes": 215.86944444444444,
+      "mean_records_visited": 2.5055555555555555,
+      "mean_ms": 0.0032467666666666666,
+      "p95_ms": 0.0065
+    },
+    {
+      "n": 512,
+      "variant": "full_records",
+      "cases": 720,
+      "correct": 720,
+      "assigned": 432,
+      "mean_context_bytes": 218401.00833333333,
+      "mean_records_visited": 409.6,
+      "mean_ms": 0.4787286347222222,
+      "p95_ms": 0.631166
+    },
+    {
+      "n": 512,
+      "variant": "projected_records",
+      "cases": 720,
+      "correct": 720,
+      "assigned": 432,
+      "mean_context_bytes": 23841.008333333335,
+      "mean_records_visited": 409.6,
+      "mean_ms": 0.197051075,
+      "p95_ms": 0.262667
+    },
+    {
+      "n": 512,
+      "variant": "indexed_projection",
+      "cases": 720,
+      "correct": 720,
+      "assigned": 432,
+      "mean_context_bytes": 626.4402777777777,
+      "mean_records_visited": 9.552777777777777,
+      "mean_ms": 0.0071665,
+      "p95_ms": 0.014
+    },
+    {
+      "n": 2048,
+      "variant": "full_records",
+      "cases": 720,
+      "correct": 720,
+      "assigned": 432,
+      "mean_context_bytes": 874497.5416666666,
+      "mean_records_visited": 1638.4,
+      "mean_ms": 1.8852901277777778,
+      "p95_ms": 2.416333
+    },
+    {
+      "n": 2048,
+      "variant": "projected_records",
+      "cases": 720,
+      "correct": 720,
+      "assigned": 432,
+      "mean_context_bytes": 96257.54166666667,
+      "mean_records_visited": 1638.4,
+      "mean_ms": 0.7701731388888889,
+      "p95_ms": 1.00175
+    },
+    {
+      "n": 2048,
+      "variant": "indexed_projection",
+      "cases": 720,
+      "correct": 720,
+      "assigned": 432,
+      "mean_context_bytes": 2317.3277777777776,
+      "mean_records_visited": 38.24305555555556,
+      "mean_ms": 0.021846966666666665,
+      "p95_ms": 0.04225
+    }
+  ],
+  "comparisons": [
+    {
+      "n": 32,
+      "context_reduction_pct": 99.22089234442043,
+      "runtime_ratio_including_build_min": 15.770706060653406,
+      "runtime_ratio_including_build_max": 16.27213906804407
+    },
+    {
+      "n": 128,
+      "context_reduction_pct": 99.60452999484245,
+      "runtime_ratio_including_build_min": 37.29311108197889,
+      "runtime_ratio_including_build_max": 38.69730174719156
+    },
+    {
+      "n": 512,
+      "context_reduction_pct": 99.71316969525083,
+      "runtime_ratio_including_build_min": 64.90822983973065,
+      "runtime_ratio_including_build_max": 65.33680166407386
+    },
+    {
+      "n": 2048,
+      "context_reduction_pct": 99.73501037254361,
+      "runtime_ratio_including_build_min": 83.09121405488906,
+      "runtime_ratio_including_build_max": 84.26884878750698
+    }
+  ],
+  "index_builds": [
+    {
+      "n": 32,
+      "seed": 17,
+      "index_build_ms": 0.004541,
+      "index_references": 32
+    },
+    {
+      "n": 32,
+      "seed": 43,
+      "index_build_ms": 0.006625,
+      "index_references": 32
+    },
+    {
+      "n": 32,
+      "seed": 89,
+      "index_build_ms": 0.006083,
+      "index_references": 32
+    },
+    {
+      "n": 128,
+      "seed": 17,
+      "index_build_ms": 0.016875,
+      "index_references": 128
+    },
+    {
+      "n": 128,
+      "seed": 43,
+      "index_build_ms": 0.014708,
+      "index_references": 128
+    },
+    {
+      "n": 128,
+      "seed": 89,
+      "index_build_ms": 0.013833,
+      "index_references": 128
+    },
+    {
+      "n": 512,
+      "seed": 17,
+      "index_build_ms": 0.033916,
+      "index_references": 512
+    },
+    {
+      "n": 512,
+      "seed": 43,
+      "index_build_ms": 0.047166,
+      "index_references": 512
+    },
+    {
+      "n": 512,
+      "seed": 89,
+      "index_build_ms": 0.04975,
+      "index_references": 512
+    },
+    {
+      "n": 2048,
+      "seed": 17,
+      "index_build_ms": 0.1095,
+      "index_references": 2048
+    },
+    {
+      "n": 2048,
+      "seed": 43,
+      "index_build_ms": 0.172458,
+      "index_references": 2048
+    },
+    {
+      "n": 2048,
+      "seed": 89,
+      "index_build_ms": 0.176917,
+      "index_references": 2048
+    }
+  ],
+  "limits": [
+    "Synthetic single-skill single-region allocation; static independent snapshots.",
+    "No humans or LLMs were measured; no token, monetary or all-admin automation claim.",
+    "Runtime is local microbenchmark timing, not model latency; three roster seeds do not establish broad confidence bounds.",
+    "Selection minimizes context bytes subject to correctness, not proven production cost optimality.",
+    "No learned evolution trajectory; candidates were authored before evaluation."
+  ],
+  "sensitivity": [
+    {
+      "scenario": "no_notes",
+      "variant": "full_records",
+      "cases": 80,
+      "mean_context_bytes": 114289.675,
+      "mean_records_visited": 1638.4
+    },
+    {
+      "scenario": "no_notes",
+      "variant": "projected_records",
+      "cases": 80,
+      "mean_context_bytes": 96267.275,
+      "mean_records_visited": 1638.4
+    },
+    {
+      "scenario": "no_notes",
+      "variant": "indexed_projection",
+      "cases": 80,
+      "mean_context_bytes": 2234.4875,
+      "mean_records_visited": 36.825
+    },
+    {
+      "scenario": "single_bucket",
+      "variant": "full_records",
+      "cases": 80,
+      "mean_context_bytes": 142844.875,
+      "mean_records_visited": 2048
+    },
+    {
+      "scenario": "single_bucket",
+      "variant": "projected_records",
+      "cases": 80,
+      "mean_context_bytes": 120316.875,
+      "mean_records_visited": 2048
+    },
+    {
+      "scenario": "single_bucket",
+      "variant": "indexed_projection",
+      "cases": 80,
+      "mean_context_bytes": 120316.875,
+      "mean_records_visited": 2048
+    }
+  ]
+}

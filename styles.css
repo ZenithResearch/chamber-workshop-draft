@@ -201,3 +201,8 @@ button { padding: 7px 12px; font: inherit; cursor: pointer; color: #000; backgro
 /* Readable source guides keep long paths and commands within the page. */
 .guide-page pre { overflow-x: auto; padding: 10px; border: 1px solid #aaa; font-size: 13px; }
 .guide-page p, .guide-page li { overflow-wrap: anywhere; }
+
+/* Operational efficiency: supporting text sections. */
+.efficiency-content section { margin-top: 24px; }
+.efficiency-content h2 { font-size: 22px; margin: 0 0 8px; color: #000080; }
+.efficiency-content section > p { margin: 0 0 10px; }

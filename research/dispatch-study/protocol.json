@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "sizes": [
+    32,
+    128,
+    512,
+    2048
+  ],
+  "seeds": [
+    17,
+    43,
+    89
+  ],
+  "requests_per_seed_size": 240,
+  "timing_repetitions": 3,
+  "development_seed": 901,
+  "development_requests": 96,
+  "variants": [
+    "full_records",
+    "projected_records",
+    "indexed_projection"
+  ],
+  "record_fields": [
+    "id",
+    "skill",
+    "region",
+    "available",
+    "load",
+    "notes"
+  ],
+  "selection_rule": "available AND exact skill AND exact region; minimize (load,id)",
+  "task_mix": "60% routine, 20% absent skill, 10% missing field, 10% unauthorized",
+  "context_measure": "UTF-8 JSON bytes, NOT model tokens",
+  "timing": "Python perf_counter_ns; includes context construction/serialization and dispatch decision; excludes oracle, generation and index build (reported separately)",
+  "design": "Manually authored candidates frozen in source before test. Choose on development correctness and bytes. Test requests held out; no subsequent fitting."
+}

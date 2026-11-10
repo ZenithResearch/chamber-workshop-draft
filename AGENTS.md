@@ -20,7 +20,6 @@ The guiding domains are self-sovereignty, efficiency and verifiability. Intended
 - **Resource:** a supporting work or material, such as a repository, publication, guide, template or worksheet. One resource may support several activities or slides. Activity resources support preparation and delivery; attendee resources are the selection intended for participants.
 - **Repository:** a resource containing source code, specifications or documentation. A link identifies the source project; it does not establish installation readiness, integration compatibility or the scope of demonstrated capabilities.
 - **Citation:** a specific use of a resource to support a claim. It should identify the claim and the relevant source location, with qualifications where needed. A general resource link or proposed reading is not a completed citation.
-- **Attachment:** optional supporting context branched from a slide, with a return to that slide. This is a retained content concept; the current site has no attachment pages.
 - **Evidence of success:** the observation or participant result proposed for assessing an activity. A success criterion is not a claim that the result has occurred.
 - **Status:** the maturity of content or supporting material. Draft, To prepare and To determine describe unfinished work; an existing file may still be a placeholder.
 
@@ -31,6 +30,8 @@ The guiding domains are self-sovereignty, efficiency and verifiability. Intended
 - Slides: slides/activity-NN.html is the first slide; subsequent pages use slides/activity-NN-slide-SS.html. Use the links in the outline to select a topic.
 - Facilitator notes: notes/activity-NN.html. Welcome and Foundations have populated notes; other unlinked notes files are placeholders.
 - [Resources](resources.html): shared materials, repository links and preparation status.
+- [Formal methods and executable SLAs](resources/formal-methods-slas.html): a brief explainer linked from Operational efficiency and its notes. Potential efficiency benefits are not measured savings; the workshop focus is evaluation and evolution.
+- Operational efficiency is presented in the slide and facilitator notes. The study page has been removed. Earlier research notes and experiment files remain in research/ for reference and are not served by the preview. Keep human cost out of this comparison.
 - [Readable human guide](readme.html): navigation and current content status.
 
 Use the agenda as the entry point. Do not infer inclusion from a filename alone: some unlinked placeholder files remain. Every detail page must keep a direct Back to agenda link. External resources open in a separate tab.

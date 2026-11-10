@@ -36,7 +36,40 @@
 <h3 id="citations">Supporting source</h3>
 <p><a href="../resources.html#resource-01">OECD: Enhancing Access to and Sharing of Data</a> is a proposed source for the discussion of access, sharing, reuse and associated rights. Specific passages and contextual notes remain to be selected.</p>
 </section>
-<section id="reliability"><h2>Reliability and verifiability</h2><p>Define what a good result looks like and how it can be inspected.</p><ul><li>Make responsibilities, permissions and approval points explicit.</li><li>Keep evidence of the information, rules, decisions and actions behind a result.</li><li>Evaluate models and working environments to discover weaknesses and assess changes.</li><li>Distinguish permissions specified in a model from controls enforced by software.</li></ul><p><a href="../slides/activity-01-slide-05.html">View slide</a></p></section>
-<section id="efficiency"><h2>Operational efficiency</h2><p>Consider the effort required to reach an accepted result.</p><ul><li>Look at time, cost, delays, review effort and rework.</li><li>Choose deliberately what people, established rules, software and AI should do.</li><li>Retain reviewed corrections so they can become improvements.</li><li>Consider how capacity can grow while keeping responsibilities and review manageable.</li></ul><p><a href="../slides/activity-01-slide-06.html">View slide</a></p></section>
+<section id="reliability"><h2>Reliability and verifiability</h2>
+<p>Strong data foundations open the door to modelling, interpretability, evals, evolutionary optimization of the working environment, verifiability and formal methods. These give us ways to understand and improve reliability.</p>
+<p>This is where the discussion can become complex. Keep the workshop focused on evals, with a brief look ahead at stronger guarantees. Formal methods already exist; applying them across a business’s AI workflows is a more ambitious direction.</p>
+<h3>Evals: the practical focus</h3>
+<p>An eval is a repeatable check of whether a system meets an agreed expectation. Define the result, test representative requests and exceptions, and inspect what actually happened. Use separate examples to assess changes to prompts, tools, procedures and the working environment before retaining them. Passing the examples is evidence of performance on those checks, not proof of every future outcome.</p>
+<p><strong>Example:</strong> For allocating a service request, check that the assigned person has the required skills, is available and has no conflicting allocation. If no eligible person is available, the expected result is an explicit escalation.</p>
+<h3>Formal methods and service agreements</h3>
+<p>Formal methods can establish that software satisfies precisely stated properties under explicit assumptions. Measurable parts of a service-level agreement (SLA) can be expressed as machine-checkable conditions. A deliverable can then be checked against those conditions, and software can automate agreed acceptance or other actions when the checks succeed.</p>
+<p>The guarantee applies to the specified property within the verified model and its assumptions. The specification, evidence about external events and connection to the deployed system still matter. This does not automatically establish that every business or legal obligation has been fulfilled.</p>
+<p>Frame reduced verification and dispute-handling effort as a potential benefit. Do not claim that formal methods eliminate all legal fees: coded agreements still raise questions of formation, interpretation, remedies and jurisdiction.</p>
+<p><strong>Transition to efficiency:</strong> Once we can verify a good result, how can we produce it with less effort?</p>
+<h3>Supporting sources</h3>
+<ul>
+<li><a href="https://xlinux.nist.gov/dads/HTML/formalverf.html" target="_blank" rel="noopener noreferrer">NIST: Formal verification</a> — establishing specified properties using logic.</li>
+<li><a href="https://csrc.nist.gov/Projects/automated-combinatorial-testing-for-software/autonomous-systems-assurance/formal-methods" target="_blank" rel="noopener noreferrer">NIST: Combinatorial methods for trust and assurance</a> — why testing remains necessary alongside proofs and implementation assumptions.</li>
+<li><a href="https://lawcom.gov.uk/project/smart-contracts/" target="_blank" rel="noopener noreferrer">Law Commission: Smart contracts</a> — legal questions remain for coded agreements. This source concerns England and Wales, not a conclusion about Canadian enforceability.</li>
+</ul>
+<p><a href="../slides/activity-01-slide-05.html">View slide</a></p></section>
+<section id="efficiency"><h2>Operational efficiency</h2>
+<p><strong>Core message:</strong> mapping out a process and tracking its execution lets us see where it can be improved. When the inputs, decision rules and success conditions are explicit, we can automate decisions and routing within that process and verify the result.</p>
+<h3>Map and track</h3>
+<p>Continue the map example: identify the steps, their dependencies, who or what performs them, the decisions between them, and the evidence needed to call the work complete. Track actual executions against that map, including exceptions. A process diagram describes intended work; the record of execution shows what happened.</p>
+<p>For each service request, keep a case ID, the step, its start and finish, the decision and rule version used, where it was routed, and the outcome of the check. This lets us distinguish waiting from execution, spot repeated handoffs and identify work that comes back for correction.</p>
+<h3>Two types of improvement</h3>
+<p><strong>Cost minimization:</strong> use fewer resources to run the same process and achieve the same quality. For example, use less context or a less expensive tool for a step whose result can still be checked.</p>
+<p><strong>Process optimization:</strong> change how the work is organized so it scales better. For example, replace repeatedly searching every record with a maintained index that supports efficient lookup. Include the work of building and updating that index.</p>
+<p>The technical distinction is lower cost for the same growth pattern versus a lower asymptotic growth rate. Define what grows—requests, records or another input—and what work is counted. A cheaper or faster run alone does not prove better scaling; not every process change alters the complexity class. On the slide, keep this to “lower the cost” and “improve how it scales.” Both must preserve the required outcome.</p>
+<h3>Evaluation and evolution</h3>
+<p>Choose a measurable improvement: fewer incorrect assignments, less waiting, fewer repeated steps or more requests completed correctly the first time. Use the execution record to identify a change, test it on comparable requests and keep it only when the evidence supports it. Check completion quality alongside speed.</p>
+<p>The change might be a better intake form, a clearer rule, a different route, a connected tool or improved agent instructions. Harness evolution is one way to improve a step within this larger process.</p>
+<h3>Automate where success can be verified</h3>
+<p>For a service request, check that required information is present, apply the approved routing rule, send it to an eligible team and verify that the assignment was recorded and acknowledged. Missing information, ambiguous rules or a failed check go to review. A correct assignment is success for the dispatch step; completing the service requires its own evidence.</p>
+<p>Automation requires connected tools and permission to act as well as a process map. Start with decisions whose inputs and outcomes can be checked, and continue recording the automated path so it can be evaluated and improved.</p>
+<p>The longer-term <a href="../resources/formal-methods-slas.html">formal methods and executable SLAs</a> discussion extends the verification theme.</p>
+<p><a href="../slides/activity-01-slide-06.html">View slide</a></p></section>
 <section id="orientation"><h2>Orientation</h2><p>Start with a recurring task from your own business.</p><ul><li>Use one prepared SOP; rough notes are enough to begin.</li><li>Build a small instance of the structures introduced in Foundations.</li><li>Identify people and agent roles, information boundaries, permissions and review criteria.</li><li>Aim to leave with a useful business decision and a practical next step.</li></ul><p><a href="../slides/activity-01-slide-07.html">View slide</a></p></section>
 </main></body></html>

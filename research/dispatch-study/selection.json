@@ -1,0 +1,22 @@
+{
+  "selection_rule": "perfect development correctness then minimum mean context bytes",
+  "development": {
+    "full_records": {
+      "correct": 96,
+      "cases": 96,
+      "mean_context_bytes": 55444.020833333336
+    },
+    "projected_records": {
+      "correct": 96,
+      "cases": 96,
+      "mean_context_bytes": 6044.020833333333
+    },
+    "indexed_projection": {
+      "correct": 96,
+      "cases": 96,
+      "mean_context_bytes": 204.46875
+    }
+  },
+  "selected": "indexed_projection",
+  "unsafe_shortcut_rejected": true
+}
